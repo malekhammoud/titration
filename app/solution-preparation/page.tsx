@@ -7,12 +7,22 @@ import { ArrowLeft, Beaker, Scale, Droplets, RotateCcw, Eye, AlertTriangle, Chec
 export default function SolutionPreparationPage() {
   const steps = [
     {
+      number: 0,
+      title: "Safety Precautions",
+      icon: <AlertTriangle className="h-6 w-6" />,
+      description: "Safety glasses must be worn at all times. Clean any spills immediately. If solutions contact skin, wash thoroughly with water.",
+      equipment: ["Safety glasses"],
+      details: "Safety is our top priority in the laboratory.",
+      imageUrl: "/solution/0.gif"
+    },
+    {
       number: 1,
       title: "Clean All Glassware",
       icon: <Droplets className="h-6 w-6" />,
       description: "Wash all equipment, then rinse 3 times with deionized water",
       equipment: ["Stir rod", "Scoop", "Beaker", "Weighing boat", "Volumetric flask", "Funnel"],
       details: "Proper cleaning ensures no contamination affects your solution concentration.",
+      imageUrl: "/solution/1.jpg"
     },
     {
       number: 2,
@@ -20,6 +30,7 @@ export default function SolutionPreparationPage() {
       icon: <Scale className="h-6 w-6" />,
       description: "Use a weighing boat to measure the solid precisely",
       details: "Record the exact mass - this determines your final concentration.",
+      imageUrl: "/solution/2.jpg"
     },
     {
       number: 3,
@@ -27,6 +38,7 @@ export default function SolutionPreparationPage() {
       icon: <Beaker className="h-6 w-6" />,
       description: "Add small amount of deionized water to beaker, add solid, rinse weighing boat 3x into beaker",
       details: "Start with minimal water to ensure complete dissolution before transferring.",
+      imageUrl: "/solution/3.jpg"
     },
     {
       number: 4,
@@ -34,6 +46,7 @@ export default function SolutionPreparationPage() {
       icon: <RotateCcw className="h-6 w-6" />,
       description: "Stir mixture until solid is completely dissolved",
       details: "Complete dissolution is essential before proceeding to the next step.",
+      imageUrl: "/solution/4.jpg"
     },
     {
       number: 5,
@@ -41,6 +54,7 @@ export default function SolutionPreparationPage() {
       icon: <Beaker className="h-6 w-6" />,
       description: "Use stir rod to guide pouring into volumetric flask, lift funnel slightly",
       details: "Leave any undissolved solid in the beaker - do not force it through.",
+      imageUrl: "/solution/5.jpg"
     },
     {
       number: 6,
@@ -55,6 +69,7 @@ export default function SolutionPreparationPage() {
       icon: <Droplets className="h-6 w-6" />,
       description: "After visible solid is gone, rinse beaker 3x with deionized water",
       details: "Add all rinses to the volumetric flask to ensure complete transfer.",
+      imageUrl: "/solution/7.jpg"
     },
     {
       number: 8,
@@ -62,6 +77,7 @@ export default function SolutionPreparationPage() {
       icon: <Beaker className="h-6 w-6" />,
       description: "Add deionized water quickly at first, then slow down at the neck",
       details: "Use a squirt bottle for better control as you approach the fill line.",
+      imageUrl: "/solution/8.jpg"
     },
     {
       number: 9,
@@ -69,6 +85,7 @@ export default function SolutionPreparationPage() {
       icon: <Eye className="h-6 w-6" />,
       description: "When ~1cm from line, add water drop by drop",
       details: "Eye level with the line - bottom of meniscus must be exactly on the fill line.",
+      imageUrl: "/solution/9.jpg"
     },
   ]
 
@@ -108,9 +125,9 @@ export default function SolutionPreparationPage() {
               <CardContent className="pt-4">
                 <div className="mb-4 rounded-lg overflow-hidden border border-gray-200">
                   <img
-                    src={`/placeholder.svg?height=200&width=400&text=Step ${step.number}: ${step.title}`}
+                    src={step.imageUrl}
                     alt={`Visual demonstration of ${step.title}`}
-                    className="w-full h-48 object-cover"
+                    className="w-full"
                   />
                 </div>
                 <p className="text-gray-700 mb-3">{step.details}</p>

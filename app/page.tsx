@@ -8,9 +8,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Chemistry Lab Procedures Guide</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Acid-Base Titration Lab Guide</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Visual step-by-step guides for Grade 11 chemistry students to master essential laboratory techniques
+            Visual step-by-step guide for performing and understanding acid-base titration procedures
           </p>
         </div>
 
@@ -75,8 +75,9 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-yellow-700">
-                Always wear appropriate personal protective equipment (PPE) including safety glasses, lab apron, and
-                gloves when working in the chemistry laboratory.
+                Safety glasses must be worn at all times in the chemistry laboratory. If any solutions are
+                spilled, clean them up immediately. If solutions come in contact with your skin, wash the affected
+                area thoroughly with water right away.
               </p>
             </CardContent>
           </Card>
