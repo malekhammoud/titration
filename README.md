@@ -7,5 +7,4 @@ This repository contains the source code for the Acid-Base Titration Lab Guide, 
 - **Titration Procedure:** Detailed instructions with optional images for each step.
 - **Solution Preparation:** Visual guide for preparing solutions from solid compounds.
 - **Key Terms:** Definitions for important titration and chemistry terms.
-- **Responsive and Interactive UI:** Built using modern React components and integrated with Next.js.
-- **Automatic Deployment:** Changes are automatically pushed from [v0.dev](https://v0.dev) and deployed on Vercel.
+- **Responsive and Interactive UI:** Built using modern React components and integrated with Next.js
