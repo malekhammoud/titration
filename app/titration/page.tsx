@@ -18,10 +18,17 @@ import {
 } from "lucide-react"
 
 // ...existing steps and definitions arrays...
+// Replace these placeholders with your actual data.
+const steps = [ 
+  /* ...your titration steps array... */
+]
+const definitions = [
+  /* ...your titration definitions array... */
+]
 
 function TitrationPageContent() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams()  
   const currentTab = searchParams.get("tab") || "procedure"
 
   return (
@@ -53,7 +60,6 @@ function TitrationPageContent() {
           </TabsList>
 
           <TabsContent value="procedure" className="space-y-6">
-            { /* ...existing procedure tab content mapping through steps... */ }
             {steps.map((step) => (
               <Card key={step.number} className="overflow-hidden">
                 <CardHeader className="bg-green-50">
