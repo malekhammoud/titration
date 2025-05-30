@@ -1,31 +1,11 @@
 # Acid-Base Titration Lab Guide
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This repository contains the source code for the Acid-Base Titration Lab Guide, a web application built with Next.js. The app provides detailed, step-by-step procedures for acid-base titration experiments and solution preparation from solids, along with key terms and safety guidelines.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mhammoud-os-projects/v0-chemistry-lab-guide)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/vT0APCUdsFG)
+## Features
 
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/mhammoud-os-projects/v0-chemistry-lab-guide](https://vercel.com/mhammoud-os-projects/v0-chemistry-lab-guide)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/vT0APCUdsFG](https://v0.dev/chat/projects/vT0APCUdsFG)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
-
+- **Titration Procedure:** Detailed instructions with optional images for each step.
+- **Solution Preparation:** Visual guide for preparing solutions from solid compounds.
+- **Key Terms:** Definitions for important titration and chemistry terms.
+- **Responsive and Interactive UI:** Built using modern React components and integrated with Next.js.
+- **Automatic Deployment:** Changes are automatically pushed from [v0.dev](https://v0.dev) and deployed on Vercel.
