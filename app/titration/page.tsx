@@ -1,4 +1,6 @@
+"use client"
 import Link from "next/link"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -12,11 +14,23 @@ import {
   Target,
   AlertTriangle,
   BookOpen,
-  Shield,
 } from "lucide-react"
 
 export default function TitrationPage() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const currentTab = searchParams.get("tab") || "procedure"
+
   const steps = [
+    {
+      number: 0,
+      title: "Safety Precautions",
+      icon: <AlertTriangle className="h-6 w-6" />,
+      description: "Safety glasses must be worn at all times. Clean any spills immediately. If solutions contact skin, wash thoroughly with water.",
+      equipment: ["Safety glasses"],
+      details: "Safety is our top priority in the lab.",
+      imageUrl: "/solution/0.gif"
+    },
     {
       number: 1,
       title: "Clean All Glassware",
@@ -24,6 +38,7 @@ export default function TitrationPage() {
       description: "Wash all equipment, then rinse 3 times with deionized water",
       equipment: ["Burette", "Beaker", "Erlenmeyer flask", "Pipet", "Rubber bulb"],
       details: "Check the burette stopcock to ensure it works properly and doesn't leak.",
+      imageUrl: "/solution/1.jpg"
     },
     {
       number: 2,
@@ -31,6 +46,7 @@ export default function TitrationPage() {
       icon: <FlaskConical className="h-6 w-6" />,
       description: "Pour small amount of titrant into burette, drain into waste",
       details: "This removes any water and coats the burette with your titrant solution.",
+      imageUrl: "/titration/2.jpg"
     },
     {
       number: 3,
@@ -38,6 +54,7 @@ export default function TitrationPage() {
       icon: <FlaskConical className="h-6 w-6" />,
       description: "Fill with titrant close to zero mark, record precise starting volume",
       details: "Remove the funnel after filling to prevent dripping into the burette.",
+      imageUrl: "/titration/3.jpg"
     },
     {
       number: 4,
@@ -45,6 +62,7 @@ export default function TitrationPage() {
       icon: <Droplets className="h-6 w-6" />,
       description: "Draw up small amount of sample, rinse inside, discard into waste",
       details: "This ensures the pipet is coated with your sample solution.",
+      imageUrl: ""
     },
     {
       number: 5,
@@ -52,6 +70,7 @@ export default function TitrationPage() {
       icon: <Eye className="h-6 w-6" />,
       description: "Use bulb to draw liquid above line, control with thumb to precise volume",
       details: "Bottom of meniscus must be precisely on the fill line.",
+      imageUrl: "/titration/5.jpg"
     },
     {
       number: 6,
@@ -59,6 +78,7 @@ export default function TitrationPage() {
       icon: <FlaskConical className="h-6 w-6" />,
       description: "Move pipet to clean flask, release thumb to drain completely",
       details: "Don't force out the liquid remaining in the tip - it's calibrated this way.",
+      imageUrl: ""
     },
     {
       number: 7,
@@ -66,6 +86,7 @@ export default function TitrationPage() {
       icon: <Droplets className="h-6 w-6" />,
       description: "Add 2-3 drops of indicator to flask, swirl to mix",
       details: "The indicator will change color at the equivalence point.",
+      imageUrl: ""
     },
     {
       number: 8,
@@ -73,6 +94,7 @@ export default function TitrationPage() {
       icon: <Target className="h-6 w-6" />,
       description: "Add titrant fairly fast while swirling, stop at first permanent color change",
       details: "This gives you an estimate for more precise trials.",
+      imageUrl: "/titration/7.gif"
     },
     {
       number: 9,
@@ -80,6 +102,7 @@ export default function TitrationPage() {
       icon: <Eye className="h-6 w-6" />,
       description: "Clean flask, new sample, add fast until near estimate, then drop by drop",
       details: "Watch for color change, stop at first permanent change after swirling.",
+      imageUrl: ""
     },
     {
       number: 10,
@@ -87,6 +110,7 @@ export default function TitrationPage() {
       icon: <RotateCcw className="h-6 w-6" />,
       description: "Repeat until 2 consecutive trials are within ± 0.1 mL",
       details: "Average the volumes for your final calculation.",
+      imageUrl: ""
     },
   ]
 
@@ -137,16 +161,10 @@ export default function TitrationPage() {
     },
   ]
 
-  const hazards = [
-    { chemical: "Borax", hazard: "Ingestion/fetal development, irritant" },
-    { chemical: "HCl", hazard: "Corrosive, irritant" },
-    { chemical: "Ammonia", hazard: "Irritant" },
-    { chemical: "Methyl Orange", hazard: "Ingestion/inhalation, irritant, poisonous" },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="container mx-auto px-4 py-8">
+        {/* ...existing header... */}
         <div className="mb-8">
           <Link href="/">
             <Button variant="outline" className="mb-4">
@@ -158,7 +176,6 @@ export default function TitrationPage() {
           <p className="text-xl text-gray-600 mb-6">
             Master the precise technique of titration to determine unknown concentrations
           </p>
-
           <Card className="bg-blue-50 border-blue-200 mb-6">
             <CardContent className="pt-6">
               <p className="text-blue-800">
@@ -169,15 +186,17 @@ export default function TitrationPage() {
           </Card>
         </div>
 
-        <Tabs defaultValue="procedure" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+        <Tabs
+          defaultValue={currentTab}
+          onValueChange={(value) => router.push(`?tab=${value}`)}
+          className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="procedure">Step-by-Step Procedure</TabsTrigger>
             <TabsTrigger value="definitions">Key Terms</TabsTrigger>
-            <TabsTrigger value="safety">Safety Information</TabsTrigger>
           </TabsList>
 
           <TabsContent value="procedure" className="space-y-6">
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <Card key={step.number} className="overflow-hidden">
                 <CardHeader className="bg-green-50">
                   <div className="flex items-center gap-4">
@@ -194,13 +213,15 @@ export default function TitrationPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  <div className="mb-4 rounded-lg overflow-hidden border border-gray-200">
-                    <img
-                      src={`/placeholder.svg?height=200&width=400&text=Step ${step.number}: ${step.title}`}
-                      alt={`Visual demonstration of ${step.title}`}
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
+                  {step.imageUrl && step.imageUrl !== "" && (
+                    <div className="mb-4 rounded-lg overflow-hidden border border-gray-200">
+                      <img
+                        src={step.imageUrl}
+                        alt={`Visual demonstration of ${step.title}`}
+                        className="w-full h-auto max-h-[300px] object-contain"
+                      />
+                    </div>
+                  )}
                   <p className="text-gray-700 mb-3">{step.details}</p>
                   {step.equipment && (
                     <div>
@@ -234,51 +255,6 @@ export default function TitrationPage() {
                 </CardContent>
               </Card>
             ))}
-          </TabsContent>
-
-          <TabsContent value="safety" className="space-y-6">
-            <div className="flex items-center gap-2 mb-6">
-              <Shield className="h-6 w-6 text-red-600" />
-              <h2 className="text-2xl font-bold">Safety Information</h2>
-            </div>
-
-            <Card className="bg-red-50 border-red-200">
-              <CardHeader>
-                <CardTitle className="text-red-800 flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5" />
-                  Personal Protective Equipment (PPE) Required
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-red-700 space-y-2">
-                  <li>
-                    <strong>Safety Glasses:</strong> Essential - must be worn at all times
-                  </li>
-                  <li>
-                    <strong>Lab Apron:</strong> Protects clothing and skin
-                  </li>
-                  <li>
-                    <strong>Gloves:</strong> Prevents skin contact with chemicals
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-yellow-50 border-yellow-200">
-              <CardHeader>
-                <CardTitle className="text-yellow-800">Chemical Hazards</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {hazards.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-3 bg-white rounded border">
-                      <span className="font-semibold text-gray-800">{item.chemical}</span>
-                      <span className="text-yellow-700">{item.hazard}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
           </TabsContent>
         </Tabs>
 

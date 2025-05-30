@@ -12,7 +12,7 @@ export default function SolutionPreparationPage() {
       icon: <AlertTriangle className="h-6 w-6" />,
       description: "Safety glasses must be worn at all times. Clean any spills immediately. If solutions contact skin, wash thoroughly with water.",
       equipment: ["Safety glasses"],
-      details: "Safety is our top priority in the laboratory.",
+      details: "Safety is our top priority in the lab.",
       imageUrl: "/solution/0.gif"
     },
     {
@@ -62,6 +62,7 @@ export default function SolutionPreparationPage() {
       icon: <RotateCcw className="h-6 w-6" />,
       description: "Add more water to beaker, stir, and decant again if solid remains",
       details: "Caution: Don't add too much water overall - you'll dilute to the line later.",
+      imageUrl: ""  // intentionally empty; image will not be rendered
     },
     {
       number: 7,
@@ -69,7 +70,7 @@ export default function SolutionPreparationPage() {
       icon: <Droplets className="h-6 w-6" />,
       description: "After visible solid is gone, rinse beaker 3x with deionized water",
       details: "Add all rinses to the volumetric flask to ensure complete transfer.",
-      imageUrl: "/solution/7.jpg"
+      imageUrl: ""
     },
     {
       number: 8,
@@ -77,7 +78,7 @@ export default function SolutionPreparationPage() {
       icon: <Beaker className="h-6 w-6" />,
       description: "Add deionized water quickly at first, then slow down at the neck",
       details: "Use a squirt bottle for better control as you approach the fill line.",
-      imageUrl: "/solution/8.jpg"
+      imageUrl: ""
     },
     {
       number: 9,
@@ -85,13 +86,14 @@ export default function SolutionPreparationPage() {
       icon: <Eye className="h-6 w-6" />,
       description: "When ~1cm from line, add water drop by drop",
       details: "Eye level with the line - bottom of meniscus must be exactly on the fill line.",
-      imageUrl: "/solution/9.jpg"
+      imageUrl: "/solution/8.jpg"
     },
   ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
+        {/* ...existing header... */}
         <div className="mb-8">
           <Link href="/">
             <Button variant="outline" className="mb-4">
@@ -106,7 +108,7 @@ export default function SolutionPreparationPage() {
         </div>
 
         <div className="grid gap-6 mb-8">
-          {steps.map((step, index) => (
+          {steps.map((step) => (
             <Card key={step.number} className="overflow-hidden">
               <CardHeader className="bg-blue-50">
                 <div className="flex items-center gap-4">
@@ -123,13 +125,15 @@ export default function SolutionPreparationPage() {
                 </div>
               </CardHeader>
               <CardContent className="pt-4">
-                <div className="mb-4 rounded-lg overflow-hidden border border-gray-200">
-                  <img
-                    src={step.imageUrl}
-                    alt={`Visual demonstration of ${step.title}`}
-                    className="w-full"
-                  />
-                </div>
+                {step.imageUrl && step.imageUrl !== "" && (
+                  <div className="mb-4 rounded-lg overflow-hidden border border-gray-200">
+                    <img
+                      src={step.imageUrl}
+                      alt={`Visual demonstration of ${step.title}`}
+                      className="w-full h-auto max-h-[300px] object-contain"
+                    />
+                  </div>
+                )}
                 <p className="text-gray-700 mb-3">{step.details}</p>
                 {step.equipment && (
                   <div>
